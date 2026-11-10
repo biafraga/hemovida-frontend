@@ -1,0 +1,53 @@
+// DADOS DE MENTIRA só para as telas funcionarem antes da API.
+// Quando ligar o backend, apague este arquivo e use os services.
+
+export interface PacienteNaFila {
+  id: number;
+  nome: string;
+  cpf: string;
+  tipoDoacao: string;
+  tipoSanguineo: string;
+}
+
+export interface ColetaConcluida {
+  id: number;
+  nome: string;
+  cpf: string;
+  volumeMl: number;
+  tipoSanguineo: string;
+  tipoDoacao: string;
+  dataHora: string;
+  codigoBolsa: string;
+}
+
+export const filaTriagemMock: PacienteNaFila[] = [
+  { id: 1, nome: "Maria da Silva Santos", cpf: "000.111.222-33", tipoDoacao: "Sangue total", tipoSanguineo: "A+" },
+  { id: 2, nome: "Eduardo Machado", cpf: "111.222.333-44", tipoDoacao: "Sangue total", tipoSanguineo: "AB+" },
+  { id: 3, nome: "Matheus Augusto", cpf: "123.456.789-01", tipoDoacao: "Aférese", tipoSanguineo: "AB+" },
+  { id: 4, nome: "Rafaela Guimarães", cpf: "321.654.987-10", tipoDoacao: "Sangue total", tipoSanguineo: "O-" },
+  { id: 5, nome: "Carlos Macedo", cpf: "222.333.444-55", tipoDoacao: "Aférese", tipoSanguineo: "B-" },
+  { id: 6, nome: "Ana Beatriz Lima", cpf: "333.444.555-66", tipoDoacao: "Sangue total", tipoSanguineo: "O+" },
+  { id: 7, nome: "João Pedro Alves", cpf: "444.555.666-77", tipoDoacao: "Sangue total", tipoSanguineo: "A-" },
+  { id: 8, nome: "Fernanda Rocha", cpf: "555.666.777-88", tipoDoacao: "Aférese", tipoSanguineo: "B+" },
+  { id: 9, nome: "Lucas Andrade", cpf: "666.777.888-99", tipoDoacao: "Sangue total", tipoSanguineo: "O+" },
+  { id: 10, nome: "Patrícia Gomes", cpf: "777.888.999-00", tipoDoacao: "Sangue total", tipoSanguineo: "AB-" },
+  { id: 11, nome: "Rodrigo Santos", cpf: "888.999.000-11", tipoDoacao: "Aférese", tipoSanguineo: "A+" },
+  { id: 12, nome: "Juliana Mendes", cpf: "999.000.111-22", tipoDoacao: "Sangue total", tipoSanguineo: "O-" },
+];
+
+export const coletasConcluidasMock: ColetaConcluida[] = [
+  { id: 1, nome: "Eduardo Machado", cpf: "111.222.333-44", volumeMl: 450, tipoSanguineo: "AB+", tipoDoacao: "Sangue total", dataHora: "02/09/2026 10:08", codigoBolsa: "BLS-2026-0510-019" },
+  { id: 2, nome: "Matheus Augusto", cpf: "123.456.789-01", volumeMl: 430, tipoSanguineo: "AB+", tipoDoacao: "Aférese", dataHora: "03/09/2026 10:26", codigoBolsa: "BLS-2026-0112-088" },
+  { id: 3, nome: "Rafaela Guimarães", cpf: "321.654.987-10", volumeMl: 450, tipoSanguineo: "O-", tipoDoacao: "Sangue total", dataHora: "04/09/2026 10:44", codigoBolsa: "BLS-2026-1234-567" },
+  { id: 4, nome: "Ana Beatriz Lima", cpf: "333.444.555-66", volumeMl: 450, tipoSanguineo: "O+", tipoDoacao: "Sangue total", dataHora: "04/09/2026 11:02", codigoBolsa: "BLS-2026-0905-101" },
+  { id: 5, nome: "João Pedro Alves", cpf: "444.555.666-77", volumeMl: 450, tipoSanguineo: "A-", tipoDoacao: "Sangue total", dataHora: "05/09/2026 09:15", codigoBolsa: "BLS-2026-0905-102" },
+  { id: 6, nome: "Fernanda Rocha", cpf: "555.666.777-88", volumeMl: 420, tipoSanguineo: "B+", tipoDoacao: "Aférese", dataHora: "05/09/2026 09:40", codigoBolsa: "BLS-2026-0905-103" },
+  { id: 7, nome: "Lucas Andrade", cpf: "666.777.888-99", volumeMl: 450, tipoSanguineo: "O+", tipoDoacao: "Sangue total", dataHora: "05/09/2026 10:05", codigoBolsa: "BLS-2026-0905-104" },
+];
+
+// Quantas doações da semana foram de cada tipo.
+export const doacoesPorTipoMock = [
+  { nome: "Sangue total", valor: 70 },
+  { nome: "Aférese", valor: 20 },
+  { nome: "Autóloga", valor: 10 },
+];

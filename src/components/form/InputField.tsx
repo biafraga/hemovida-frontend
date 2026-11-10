@@ -26,7 +26,7 @@ export function InputField({ label, erro, tema = "doador", id, className = "", .
       <input
         id={campoId}
         aria-invalid={erro ? true : undefined}
-        className={`w-full rounded-lg border bg-branco px-3 py-3 outline-none placeholder:text-preto/40 focus:ring-2 focus:ring-azul-3 disabled:opacity-50 ${
+        className={`w-full rounded-lg border bg-card px-3 py-3 outline-none placeholder:text-preto/40 focus:ring-2 focus:ring-azul-3 disabled:opacity-50 ${
           erro ? "border-vermelho-1" : "border-preto"
         } ${className}`}
         {...resto}
