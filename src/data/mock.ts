@@ -1,6 +1,8 @@
 // DADOS DE MENTIRA só para as telas funcionarem antes da API.
 // Quando ligar o backend, apague este arquivo e use os services.
 
+import type { Doador } from "@/models/doador";
+
 export interface PacienteNaFila {
   id: number;
   nome: string;
@@ -50,4 +52,53 @@ export const doacoesPorTipoMock = [
   { nome: "Sangue total", valor: 70 },
   { nome: "Aférese", valor: 20 },
   { nome: "Autóloga", valor: 10 },
+];
+
+// ---------- Recepção ----------
+
+export interface ItemHistorico {
+  data: string; // AAAA-MM-DD
+  tipo: string;
+  status: "Concluído" | "Cancelado";
+}
+
+export interface DoadorComHistorico {
+  doador: Doador;
+  historico: ItemHistorico[];
+}
+
+export const doadoresMock: DoadorComHistorico[] = [
+  {
+    doador: {
+      doador_id: 1, usuario_id: 1, doador_nome: "Maria da Silva Santos", doador_cpf: "00011122233",
+      doador_data_nascimento: "1998-01-01", doador_genero: "Feminino", doador_tipo_sanguineo: "A", doador_fator_rh: "+",
+      doador_telefone: "21974254823", doador_email: "maria@email.com", doador_cep: "20000000",
+      doador_endereco: "Av. Brasil, 100, Centro, Rio de Janeiro - RJ", doador_status: 1,
+    },
+    historico: [
+      { data: "2026-09-02", tipo: "Sangue total", status: "Cancelado" },
+      { data: "2026-02-13", tipo: "Sangue total", status: "Concluído" },
+      { data: "2025-04-08", tipo: "Sangue total", status: "Concluído" },
+    ],
+  },
+  {
+    // Doou há pouco tempo: serve para testar o aviso de intervalo.
+    doador: {
+      doador_id: 2, usuario_id: 2, doador_nome: "Eduardo Machado", doador_cpf: "11122233344",
+      doador_data_nascimento: "1990-05-10", doador_genero: "Masculino", doador_tipo_sanguineo: "AB", doador_fator_rh: "+",
+      doador_telefone: "21988887777", doador_email: "eduardo.machado@email.com", doador_cep: "20010000",
+      doador_endereco: "Rua da Assembleia, 50, Centro, Rio de Janeiro - RJ", doador_status: 1,
+    },
+    historico: [{ data: "2026-10-20", tipo: "Sangue total", status: "Concluído" }],
+  },
+  {
+    // Nunca doou: serve para testar o histórico vazio.
+    doador: {
+      doador_id: 3, usuario_id: 3, doador_nome: "Matheus Augusto", doador_cpf: "12345678901",
+      doador_data_nascimento: "1985-03-22", doador_genero: "Masculino", doador_tipo_sanguineo: "AB", doador_fator_rh: "+",
+      doador_telefone: "21977776666", doador_email: "matheus@email.com", doador_cep: "20020000",
+      doador_endereco: "Rua do Ouvidor, 12, Centro, Rio de Janeiro - RJ", doador_status: 1,
+    },
+    historico: [],
+  },
 ];

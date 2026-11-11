@@ -1,20 +1,24 @@
+import { ChevronDown } from "lucide-react";
 import { useId } from "react";
 import type { SelectHTMLAttributes } from "react";
-import { ChevronDown } from "lucide-react";
+
+// "doador" = rótulo vinho (portal do doador). "admin" = rótulo azul (painel interno).
+const corDoRotulo = { doador: "text-vermelho-2", admin: "text-azul-1" };
 
 interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   opcoes: string[];
   erro?: string;
+  tema?: keyof typeof corDoRotulo;
 }
 
-export function SelectField({ label, opcoes, erro, id, ...resto }: SelectFieldProps) {
+export function SelectField({ label, opcoes, erro, tema = "doador", id, ...resto }: SelectFieldProps) {
   const idGerado = useId();
   const campoId = id ?? idGerado;
 
   return (
     <div className="flex w-full flex-col gap-1">
-      <label htmlFor={campoId} className="font-bold text-vermelho-2">
+      <label htmlFor={campoId} className={`font-bold ${corDoRotulo[tema]}`}>
         {label}
       </label>
 
@@ -36,10 +40,7 @@ export function SelectField({ label, opcoes, erro, id, ...resto }: SelectFieldPr
           ))}
         </select>
         {/* pointer-events-none: o clique passa pela setinha e abre o select */}
-        <ChevronDown
-          size={18}
-          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-preto"
-        />
+        <ChevronDown size={18} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-preto" />
       </div>
 
       {erro && (
